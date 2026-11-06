@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Plato{% endblock %}
+{% block contenido %}
+<h1>{{ 'Editar' if plato else 'Nuevo' }} plato</h1>
+<form method="post" class="col-md-5">
+  <div class="mb-3"><label class="form-label">Nombre</label>
+    <input name="nombre" class="form-control" value="{{ plato.nombre if plato else '' }}" required></div>
+  <div class="mb-3"><label class="form-label">Precio (COP)</label>
+    <input type="number" name="precio" min="1" class="form-control" value="{{ plato.precio if plato else '' }}" required></div>
+  <div class="mb-3"><label class="form-label">Categoría</label>
+    <select name="categoria_id" class="form-select" required>
+      {% for c in categorias %}
+      <option value="{{ c.id }}" {{ 'selected' if plato and plato.categoria_id == c.id }}>{{ c.nombre }}</option>
+      {% endfor %}
+    </select></div>
+  <div class="form-check mb-3">
+    <input type="checkbox" name="disponible" class="form-check-input" id="disp" {{ 'checked' if (plato is none) or plato.disponible }}>
+    <label for="disp" class="form-check-label">Disponible</label></div>
+  <button class="btn btn-sigr">Guardar</button>
+  <a href="/menu/" class="ms-2">Cancelar</a>
+</form>
+{% endblock %}

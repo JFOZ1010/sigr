@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
@@ -38,5 +38,11 @@ def create_app(testing=False):
     # Los blueprints se registran aquí, uno por módulo.
     from . import auth
     app.register_blueprint(auth.bp)
+    from . import menu
+    app.register_blueprint(menu.bp)
+
+    @app.route("/")
+    def inicio():
+        return redirect(url_for("menu.index"))
 
     return app
