@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block titulo %}Cierre de caja{% endblock %}
+{% block contenido %}
+<h1>Cierre de caja</h1>
+<p>Fecha: <strong>{{ fecha.strftime('%d/%m/%Y') }}</strong> · Pedidos pagados: <strong>{{ datos.num_pedidos }}</strong>
+   · Total: <strong>{{ datos.total|cop }}</strong></p>
+<form method="post">
+  <input type="hidden" name="fecha" value="{{ fecha.isoformat() }}">
+  <button class="btn btn-sigr">Guardar cierre</button>
+  <a href="/caja/reporte?fecha={{ fecha.isoformat() }}" class="ms-2">Volver al reporte</a>
+</form>
+{% endblock %}
