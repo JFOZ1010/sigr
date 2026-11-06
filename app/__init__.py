@@ -44,6 +44,9 @@ def create_app(testing=False):
     from . import pedidos
     app.register_blueprint(pedidos.bp)
 
+    from . import reservas
+    app.register_blueprint(reservas.bp)
+
     @app.route("/")
     def inicio():
         return redirect(url_for("menu.index"))
