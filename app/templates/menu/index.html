@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block titulo %}Menú{% endblock %}
+{% block contenido %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>Menú</h1>
+  {% if current_user.is_authenticated and current_user.rol == 'administrador' %}
+  <a href="/menu/platos/nuevo" class="btn btn-sigr">+ Nuevo plato</a>
+  {% endif %}
+</div>
+{% for c in categorias %}
+  <h2 class="h4 mt-4">{{ c.nombre }}</h2>
+  <table class="table table-sm align-middle">
+    {% for p in c.platos %}
+    <tr>
+      <td>{{ p.nombre }}{% if not p.disponible %} <span class="badge bg-secondary">No disponible</span>{% endif %}</td>
+      <td class="text-end">{{ p.precio|cop }}</td>
+      {% if current_user.is_authenticated and current_user.rol == 'administrador' %}
+      <td class="text-end">
+        <a href="/menu/platos/{{ p.id }}/editar" class="btn btn-sm btn-outline-secondary">Editar</a>
+        <form method="post" action="/menu/platos/{{ p.id }}/eliminar" class="d-inline"
+              onsubmit="return confirm('¿Eliminar este plato?')">
+          <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+        </form>
+      </td>
+      {% endif %}
+    </tr>
+    {% else %}
+    <tr><td class="text-muted">Sin platos.</td></tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p class="text-muted">Aún no hay categorías.</p>
+{% endfor %}
+{% endblock %}
