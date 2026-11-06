@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %}Reporte de caja{% endblock %}
+{% block contenido %}
+<h1>Reporte de caja</h1>
+<form method="get" class="row g-2 mb-4">
+  <div class="col-auto"><input type="date" name="fecha" value="{{ fecha.isoformat() }}" class="form-control"></div>
+  <div class="col-auto"><button class="btn btn-sigr">Ver</button></div>
+  <div class="col-auto"><a class="btn btn-outline-secondary" href="/caja/cierre?fecha={{ fecha.isoformat() }}">Ir al cierre</a></div>
+</form>
+<div class="row mb-4">
+  <div class="col-md-4"><div class="card"><div class="card-body">
+    <div class="text-muted">Total de ventas</div><div class="fs-3">{{ datos.total|cop }}</div></div></div></div>
+  <div class="col-md-4"><div class="card"><div class="card-body">
+    <div class="text-muted">Pedidos pagados</div><div class="fs-3">{{ datos.num_pedidos }}</div></div></div></div>
+</div>
+{% if cierre %}<div class="alert alert-info">Día cerrado: {{ cierre.total_ventas|cop }} en {{ cierre.num_pedidos }} pedidos.</div>{% endif %}
+<h2 class="h5">Cantidad vendida por plato</h2>
+<table class="table table-sm w-auto">
+  {% for nombre, cantidad in datos.por_plato %}
+  <tr><td>{{ nombre }}</td><td class="text-end">{{ cantidad }}</td></tr>
+  {% else %}
+  <tr><td class="text-muted">Sin ventas en esta fecha.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
