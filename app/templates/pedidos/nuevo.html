@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Nuevo pedido{% endblock %}
+{% block contenido %}
+<h1>Nuevo pedido</h1>
+<form method="post">
+  <div class="mb-3 col-md-3"><label class="form-label">Mesa</label>
+    <select name="mesa" class="form-select">
+      {% for m in mesas %}<option value="{{ m }}">Mesa {{ m }}</option>{% endfor %}
+    </select></div>
+  <table class="table align-middle">
+    <thead><tr><th>Plato</th><th>Precio</th><th style="width:120px">Cantidad</th></tr></thead>
+    {% for p in platos %}
+    <tr><td>{{ p.nombre }}</td><td>{{ p.precio|cop }}</td>
+        <td><input type="number" name="cantidad_{{ p.id }}" min="0" value="0" class="form-control form-control-sm"></td></tr>
+    {% else %}
+    <tr><td colspan="3" class="text-muted">No hay platos disponibles.</td></tr>
+    {% endfor %}
+  </table>
+  <button class="btn btn-sigr">Crear pedido</button>
+  <a href="/pedidos/" class="ms-2">Cancelar</a>
+</form>
+{% endblock %}
