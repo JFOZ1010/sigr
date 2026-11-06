@@ -36,5 +36,7 @@ def create_app(testing=False):
         db.create_all()
 
     # Los blueprints se registran aquí, uno por módulo.
+    from . import auth
+    app.register_blueprint(auth.bp)
 
     return app
