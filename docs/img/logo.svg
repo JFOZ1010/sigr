@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-label="Logo SIGR">
+  <circle cx="100" cy="100" r="96" fill="#fff3e0" stroke="#b5532a" stroke-width="6"/>
+  <!-- plato -->
+  <circle cx="100" cy="100" r="52" fill="#fff" stroke="#d9822b" stroke-width="6"/>
+  <circle cx="100" cy="100" r="34" fill="#fde2b8" stroke="#d9822b" stroke-width="3"/>
+  <!-- tenedor -->
+  <g stroke="#b5532a" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M38 44v34M46 44v34M54 44v34M38 78q8 10 16 0M46 78v78"/>
+  </g>
+  <!-- cuchillo -->
+  <path d="M158 44q-14 18-10 50h10z M153 94v62" fill="#b5532a" stroke="#b5532a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="112" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7a3417">SIGR</text>
+</svg>
