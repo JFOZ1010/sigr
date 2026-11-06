@@ -31,6 +31,7 @@ Aplicación web en Flask para gestionar menú, pedidos, reservas y caja de un re
 - [🔀 Flujo de trabajo](#-flujo-de-trabajo)
 - [📏 Convenciones de código](#-convenciones-de-código)
 - [📚 Documentación asociada](#-documentación-asociada)
+- [🗺️ Próximas mejoras](#️-próximas-mejoras)
 - [📄 Licencia](#-licencia)
 - [👤 Autor](#-autor)
 
@@ -191,6 +192,13 @@ Son **20 pruebas** con SQLite en memoria: auth (4), menú (5), pedidos (5), rese
 - [Modelo de datos](docs/base_datos.md)
 - [Manual de despliegue](docs/manual_despliegue.md)
 - [Changelog](CHANGELOG.md)
+
+## 🗺️ Próximas mejoras
+
+Ideas registradas como issues para versiones futuras:
+
+- [#2 Validar la capacidad de la mesa según el número de personas](https://github.com/JFOZ1010/sigr/issues/2)
+- [#3 Agregar módulo de facturación](https://github.com/JFOZ1010/sigr/issues/3)
 
 ## 📄 Licencia
 
